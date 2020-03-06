@@ -10,22 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
-    
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var getImageButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         activityIndicator.isHidden = true
         activityIndicator.hidesWhenStopped = true
+        fetchImage()
     }
-    @IBAction func getImagePressed(_ sender: UIButton) {
-        
-        label.isHidden = true
-        getImageButton.isEnabled = false
+    func fetchImage() {
+
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
