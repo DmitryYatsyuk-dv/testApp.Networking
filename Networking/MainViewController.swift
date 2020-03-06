@@ -17,7 +17,25 @@ class MainViewController: UIViewController {
     }
     @IBAction func getRequest(_ sender: UIButton) {
         
-        
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts")
+            else { return }
+            
+        let session = URLSession.shared
+        session.dataTask(with: url) { (data, response, error) in
+            guard
+                let response = response,
+                let data = data
+                else { return }
+            print(response, data)
+            
+            // Serialize JSON
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+            } catch {
+                print(error)
+            }
+        }.resume()
     }
     
     @IBAction func postRequest(_ sender: UIButton) {
