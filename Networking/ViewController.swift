@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         fetchImage()
     }
     func fetchImage() {
-
+        
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         

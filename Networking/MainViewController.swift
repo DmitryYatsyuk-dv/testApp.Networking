@@ -9,17 +9,17 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
+        
+        
     }
     @IBAction func getRequest(_ sender: UIButton) {
         
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts")
             else { return }
-            
+        
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, error) in
             guard
@@ -40,18 +40,35 @@ class MainViewController: UIViewController {
     
     @IBAction func postRequest(_ sender: UIButton) {
         
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts")
+            else { return }
         
+        let userData = ["Course" : "Networking",
+                        "Lesson" : "Get and Post Requests"]
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: userData, options: [])
+            else { return }
+        request.httpBody = httpBody
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            guard
+                let response = response,
+                let data = data
+                else { return }
+            print(response)
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+            } catch {
+                print(error)
+            }
+        }.resume()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
