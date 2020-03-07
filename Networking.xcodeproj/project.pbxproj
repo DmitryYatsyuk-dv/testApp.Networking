@@ -18,6 +18,7 @@
 		32B9CC342413BE6100F31F38 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC332413BE6100F31F38 /* WebViewController.swift */; };
 		32B9CC362413C2DD00F31F38 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC352413C2DD00F31F38 /* TableViewCell.swift */; };
 		32B9CC382413C6E400F31F38 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC372413C6E400F31F38 /* Course.swift */; };
+		32B9CC3A24143B2300F31F38 /* WebsiteDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC3924143B2300F31F38 /* WebsiteDescription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		32B9CC332413BE6100F31F38 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		32B9CC352413C2DD00F31F38 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		32B9CC372413C6E400F31F38 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		32B9CC3924143B2300F31F38 /* WebsiteDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsiteDescription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,9 +73,10 @@
 				32493303241293E2005997F1 /* MainViewController.swift */,
 				3281515424125E0E000F3D06 /* ViewController.swift */,
 				32B9CC312413A9B200F31F38 /* CoursesViewController.swift */,
+				32B9CC3924143B2300F31F38 /* WebsiteDescription.swift */,
+				32B9CC372413C6E400F31F38 /* Course.swift */,
 				32B9CC352413C2DD00F31F38 /* TableViewCell.swift */,
 				32B9CC332413BE6100F31F38 /* WebViewController.swift */,
-				32B9CC372413C6E400F31F38 /* Course.swift */,
 				3281515624125E0E000F3D06 /* Main.storyboard */,
 				3281515924125E0F000F3D06 /* Assets.xcassets */,
 				3281515B24125E0F000F3D06 /* LaunchScreen.storyboard */,
@@ -158,6 +161,7 @@
 				32B9CC342413BE6100F31F38 /* WebViewController.swift in Sources */,
 				3281515124125E0E000F3D06 /* AppDelegate.swift in Sources */,
 				3281515324125E0E000F3D06 /* SceneDelegate.swift in Sources */,
+				32B9CC3A24143B2300F31F38 /* WebsiteDescription.swift in Sources */,
 				32493304241293E2005997F1 /* MainViewController.swift in Sources */,
 				32B9CC362413C2DD00F31F38 /* TableViewCell.swift in Sources */,
 				32B9CC322413A9B200F31F38 /* CoursesViewController.swift in Sources */,

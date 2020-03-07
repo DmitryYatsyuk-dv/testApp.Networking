@@ -21,7 +21,11 @@ class CoursesViewController: UIViewController {
     func fetchData() {
         
         // We create a session for downloading this at URL-address
-        let jsonUrl = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
+        
+//        let jsonUrl = "https://swiftbook.ru//wp-content/uploads/api/api_course"
+//        let jsonUrl = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
+//        let jsonUrl = "https://swiftbook.ru//wp-content/uploads/api/api_website_description"
+            let jsonUrl = "https://swiftbook.ru//wp-content/uploads/api/api_missing_or_wrong_fields"
         
         // Validation url-address
         guard let url = URL(string: jsonUrl) else { return }
@@ -33,8 +37,9 @@ class CoursesViewController: UIViewController {
             
             // Realization JSON-Decoder
             do {
-                let course = try JSONDecoder().decode(Course.self, from: data)
-                print(course.name)
+                let websiteDescription = try JSONDecoder().decode(WebsiteDescription.self, from: data)
+                print(websiteDescription.websiteDescription ?? "Website Descripttion is not available")
+                print(websiteDescription.websiteName ?? "Website Name : Error")
                 
             } catch let error{
                 print("Error serialization JSON", error)
