@@ -12,8 +12,8 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var courseImage: UIImageView!
     @IBOutlet weak var courseOfName: UILabel!
-    @IBOutlet weak var courseOfLesson: UILabel!
-    @IBOutlet weak var courseOfTest: UILabel!
+    @IBOutlet weak var numberOfLessons: UILabel!
+    @IBOutlet weak var numberOfTests: UILabel!
     
 }
 

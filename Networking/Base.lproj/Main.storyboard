@@ -214,9 +214,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="courseImage" destination="zpP-Ff-nch" id="OBT-gg-I8r"/>
-                                            <outlet property="courseOfLesson" destination="KhE-dd-635" id="jM8-hw-ude"/>
                                             <outlet property="courseOfName" destination="uV2-Sf-yUy" id="tVH-xg-ggO"/>
-                                            <outlet property="courseOfTest" destination="H4L-oX-UJo" id="t5Z-l6-9fT"/>
+                                            <outlet property="numberOfLessons" destination="KhE-dd-635" id="jM8-hw-ude"/>
+                                            <outlet property="numberOfTests" destination="H4L-oX-UJo" id="t5Z-l6-9fT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -261,9 +261,10 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ovh-54-43t">
-                                <rect key="frame" x="0.0" y="88" width="414" height="2"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progressViewStyle="bar" progress="0.050000000000000003" id="s6Y-4O-u4w">
+                                <rect key="frame" x="0.0" y="93.5" width="414" height="1.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -271,16 +272,16 @@
                             <constraint firstItem="5I6-XT-e8D" firstAttribute="trailing" secondItem="3lR-GX-hp5" secondAttribute="trailing" id="1yh-UE-HIE"/>
                             <constraint firstAttribute="bottom" secondItem="5I6-XT-e8D" secondAttribute="bottom" id="46A-aI-DzP"/>
                             <constraint firstItem="5I6-XT-e8D" firstAttribute="top" secondItem="3lR-GX-hp5" secondAttribute="top" id="7Ie-vz-vL6"/>
+                            <constraint firstItem="s6Y-4O-u4w" firstAttribute="top" secondItem="3lR-GX-hp5" secondAttribute="top" constant="2" id="ACo-aD-dxe"/>
+                            <constraint firstItem="s6Y-4O-u4w" firstAttribute="leading" secondItem="jwK-cL-YwH" secondAttribute="leading" id="Ajh-OM-2cZ"/>
                             <constraint firstItem="5I6-XT-e8D" firstAttribute="leading" secondItem="3lR-GX-hp5" secondAttribute="leading" id="FnY-yS-wA9"/>
-                            <constraint firstItem="Ovh-54-43t" firstAttribute="top" secondItem="3lR-GX-hp5" secondAttribute="top" id="N2S-EG-reG"/>
-                            <constraint firstItem="Ovh-54-43t" firstAttribute="leading" secondItem="jwK-cL-YwH" secondAttribute="leading" id="YSC-f0-oqh"/>
-                            <constraint firstAttribute="trailing" secondItem="Ovh-54-43t" secondAttribute="trailing" id="ufc-g4-eSc"/>
+                            <constraint firstAttribute="trailing" secondItem="s6Y-4O-u4w" secondAttribute="trailing" id="sGR-IQ-3cM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3lR-GX-hp5"/>
                     </view>
                     <navigationItem key="navigationItem" id="EeR-Xe-xGy"/>
                     <connections>
-                        <outlet property="progressView" destination="Ovh-54-43t" id="LvR-Nt-Rcz"/>
+                        <outlet property="progressView" destination="s6Y-4O-u4w" id="O7a-is-W7K"/>
                         <outlet property="webView" destination="5I6-XT-e8D" id="WFk-Z1-OlT"/>
                     </connections>
                 </viewController>
