@@ -13,6 +13,7 @@ class CoursesViewController: UIViewController {
     private var courses = [Course]()
     private var courseName: String?
     private var courseURL: String?
+    private let url = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,42 +24,13 @@ class CoursesViewController: UIViewController {
     }
     
     func fetchData() {
-        
-        // We create a session for downloading this at URL-address
-        
-        let jsonUrl = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
-        //        let jsonUrl = "https://swiftbook.ru//wp-content/uploads/api/api_course"
-        //        let jsonUrl = "https://swiftbook.ru//wp-content/uploads/api/api_website_description"
-        //        let jsonUrl = "https://swiftbook.ru//wp-content/uploads/api/api_missing_or_wrong_fields"
-        
-        // Check validation url-address
-        guard let url = URL(string: jsonUrl) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
-            // Trying to get data
-            guard let data = data else { return }
-            
-            // Realization JSON-Decoder
-            do {
-                
-                // Converter format snakeCase / camelCase
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                
-                self.courses = try decoder.decode([Course].self, from: data)
-                print(self.courses[3].name ?? "Courses/part4/name is not available")
-                // print(websiteDescription.websiteName ?? "Website Name : Error")
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            } catch let error {
-                print("Error serialization JSON", error)
+        NetworkManager.fetchData(url: url) { (courses) in
+            self.courses = courses
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
-            
-        }.resume()
-    }
+        }
+}
     
     
     private func configureCell(cell: TableViewCell, for indexPath: IndexPath) {

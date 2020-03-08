@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private let url = "https://images.pexels.com/photos/2103864/pexels-photo-2103864.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -20,24 +22,17 @@ class ViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         fetchImage()
     }
+    
     func fetchImage() {
         
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        // Validation url address
-        guard let url = URL(string: "https://images.pexels.com/photos/2103864/pexels-photo-2103864.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-            else { return }
-        
-        let urlSession = URLSession.shared
-        urlSession.dataTask(with: url) { (data, response, error) in
-            if let data = data, let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.imageView.image = image
-                }
-            }
-        } .resume()
+        NetworkManager.downloadImage(url: url) { (image) in
+            
+            self.activityIndicator.stopAnimating()
+            self.imageView.image = image
+        }
     }
 }
 
