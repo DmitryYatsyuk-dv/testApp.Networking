@@ -21,6 +21,7 @@
 		32B9CC3C2415096700F31F38 /* MainCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC3B2415096700F31F38 /* MainCollectionVC.swift */; };
 		32B9CC3E2415097C00F31F38 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC3D2415097C00F31F38 /* CollectionViewCell.swift */; };
 		32B9CC402415145000F31F38 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC3F2415145000F31F38 /* NetworkManager.swift */; };
+		32B9CC4224152DE000F31F38 /* ImageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC4124152DDF00F31F38 /* ImageProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		32B9CC3B2415096700F31F38 /* MainCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionVC.swift; sourceTree = "<group>"; };
 		32B9CC3D2415097C00F31F38 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		32B9CC3F2415145000F31F38 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		32B9CC4124152DDF00F31F38 /* ImageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProperties.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +79,9 @@
 				32B9CC3F2415145000F31F38 /* NetworkManager.swift */,
 				3281515424125E0E000F3D06 /* ViewController.swift */,
 				32B9CC3B2415096700F31F38 /* MainCollectionVC.swift */,
-				32B9CC3D2415097C00F31F38 /* CollectionViewCell.swift */,
+				32B9CC4124152DDF00F31F38 /* ImageProperties.swift */,
 				32B9CC312413A9B200F31F38 /* CoursesViewController.swift */,
+				32B9CC3D2415097C00F31F38 /* CollectionViewCell.swift */,
 				32B9CC3924143B2300F31F38 /* WebsiteDescription.swift */,
 				32B9CC372413C6E400F31F38 /* Course.swift */,
 				32B9CC352413C2DD00F31F38 /* TableViewCell.swift */,
@@ -170,6 +173,7 @@
 				3281515124125E0E000F3D06 /* AppDelegate.swift in Sources */,
 				3281515324125E0E000F3D06 /* SceneDelegate.swift in Sources */,
 				32B9CC3A24143B2300F31F38 /* WebsiteDescription.swift in Sources */,
+				32B9CC4224152DE000F31F38 /* ImageProperties.swift in Sources */,
 				32B9CC362413C2DD00F31F38 /* TableViewCell.swift in Sources */,
 				32B9CC322413A9B200F31F38 /* CoursesViewController.swift in Sources */,
 				32B9CC3E2415097C00F31F38 /* CollectionViewCell.swift in Sources */,
