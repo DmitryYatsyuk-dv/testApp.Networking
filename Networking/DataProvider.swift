@@ -18,10 +18,9 @@ class DataProvider: NSObject {
     private lazy var bgSession: URLSession = {
         
         let config = URLSessionConfiguration.background(withIdentifier: "ru.yatsyuk.dev@mail.Networking")
-        
-        // The system takes charge of optimizing downloads
-        //        config.isDiscretionary = true
-        
+        config.isDiscretionary = true   // The system will start the task at the optimal time( default: False )
+        config.timeoutIntervalForResource = 300     // Network timeout in seconds
+        config.waitsForConnectivity = true      // Waiting for a network connection( default: True)
         config.sessionSendsLaunchEvents = true
         return URLSession(configuration: config, delegate: self, delegateQueue: nil)
     }()
@@ -45,6 +44,7 @@ class DataProvider: NSObject {
 
 extension DataProvider: URLSessionDelegate {
     
+    // Иackground download completion
     func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
         
         DispatchQueue.main.async {
@@ -72,7 +72,6 @@ extension DataProvider: URLSessionDownloadDelegate {
     }
     
     // Showing the progress of the download
-    
     func urlSession(_ session: URLSession,
                     downloadTask: URLSessionDownloadTask,
                     didWriteData bytesWritten: Int64,
@@ -88,6 +87,13 @@ extension DataProvider: URLSessionDownloadDelegate {
             self.onProgress?(progress)
         }
     }
+}
+
+//  Reconnect
+extension DataProvider: URLSessionTaskDelegate {
+    
+    // Waiting for a connection, updating the interface and more
+    
     
 }
 
