@@ -169,12 +169,28 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zxI-We-Yaa">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q19-h4-OlI">
+                                <rect key="frame" x="155" y="510" width="104" height="26"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="bIm-LV-Mbo">
+                                <rect key="frame" x="132" y="622" width="150" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="pkI-19-O9V"/>
+                                </constraints>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bIm-LV-Mbo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6kq-Lh-77E"/>
+                            <constraint firstItem="q19-h4-OlI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Acr-1c-SMz"/>
                             <constraint firstAttribute="bottom" secondItem="pGe-QY-dnF" secondAttribute="bottom" id="CC3-RI-yw9"/>
                             <constraint firstItem="zxI-We-Yaa" firstAttribute="centerY" secondItem="pGe-QY-dnF" secondAttribute="centerY" id="HsV-Qa-SqB"/>
                             <constraint firstItem="pGe-QY-dnF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="JCa-cF-5PO"/>
+                            <constraint firstItem="bIm-LV-Mbo" firstAttribute="top" secondItem="q19-h4-OlI" secondAttribute="bottom" constant="86" id="KRd-q2-xMv"/>
+                            <constraint firstItem="q19-h4-OlI" firstAttribute="top" secondItem="zxI-We-Yaa" secondAttribute="bottom" constant="52" id="Nx2-XZ-W3n"/>
                             <constraint firstItem="pGe-QY-dnF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="f6U-q5-0Ed"/>
                             <constraint firstItem="pGe-QY-dnF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nMv-UH-Wr2"/>
                             <constraint firstItem="zxI-We-Yaa" firstAttribute="centerX" secondItem="pGe-QY-dnF" secondAttribute="centerX" id="vQH-3G-qvn"/>
@@ -184,7 +200,9 @@
                     <navigationItem key="navigationItem" title="Image" id="sh7-Cc-VFY"/>
                     <connections>
                         <outlet property="activityIndicator" destination="zxI-We-Yaa" id="UvO-bP-s7m"/>
+                        <outlet property="completedLabel" destination="q19-h4-OlI" id="B67-nP-h9o"/>
                         <outlet property="imageView" destination="pGe-QY-dnF" id="nWc-De-wiW"/>
+                        <outlet property="progressView" destination="bIm-LV-Mbo" id="Vdh-V2-3fV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -248,6 +266,8 @@
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showImage" id="tVc-fO-u4G"/>
                         <segue destination="mqn-Pv-JmZ" kind="show" identifier="ourCourses" id="L3J-AW-yWM"/>
                         <segue destination="mqn-Pv-JmZ" kind="show" identifier="OurCoursesWithAlamofire" id="7ga-p7-2PB"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="responseData" id="rWC-p9-SpU"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LargeImage" id="dj4-wh-O8J"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whg-RN-kG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -274,6 +294,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="dj4-wh-O8J"/>
         <segue reference="7ga-p7-2PB"/>
     </inferredMetricsTieBreakers>
 </document>

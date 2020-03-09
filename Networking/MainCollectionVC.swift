@@ -18,11 +18,16 @@ enum Actions: String, CaseIterable {
     case uploadImage = "Upload Image"
     case downloadFile = "Download File"
     case alamofireCourses = "Our Courses (Alamofire)"
+    case responseData = "responseData"
+    case responseString = "responseString"
+    case response = "response"
+    case downloadLargeImage = "Download Large Image"
 }
 
 private let reuseIdentifier = "Cell"
 private let url = "https://jsonplaceholder.typicode.com/posts"
 private let uploadImage = "https://api.imgur.com/3/image"
+private let swiftbookApi = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
 
 
 
@@ -134,8 +139,18 @@ class MainCollectionVC: UICollectionViewController {
         case .downloadFile:
             showAlert()
             dataProvider.startDownload()
-        case .alamofireCourses :
+        case .alamofireCourses:
             performSegue(withIdentifier: "OurCoursesWithAlamofire", sender: self)
+        case .responseData:
+            performSegue(withIdentifier: "responseData", sender: self)
+            AlamofireNetworkRequest.responseData(url: swiftbookApi)
+        case .responseString:
+            AlamofireNetworkRequest.responseString(url: swiftbookApi)
+        case .response:
+            AlamofireNetworkRequest.response(url: swiftbookApi)
+        case .downloadLargeImage:
+            performSegue(withIdentifier: "LargeImage", sender: self)
+            
         }
     }
     
@@ -144,12 +159,19 @@ class MainCollectionVC: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let coursesVC = segue.destination as? CoursesViewController
+        let imageVC = segue.destination as? ViewController
         
         switch segue.identifier {
         case "ourCourses":
             coursesVC?.fetchData()
         case "OurCoursesWithAlamofire":
             coursesVC?.fetchDataWithAlamofire()
+        case "showImage":
+            imageVC?.fetchImage()
+        case "responseData":
+            imageVC?.fetchDataWithAlamofire()
+        case "LargeImage" :
+            imageVC?.downloadImageWithProgress()
         default:
             break
         }
