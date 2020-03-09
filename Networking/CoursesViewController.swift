@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CoursesViewController: UIViewController {
     
@@ -17,12 +18,6 @@ class CoursesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        fetchData()
-    }
-    
     func fetchData() {
         NetworkManager.fetchData(url: url) { (courses) in
             self.courses = courses
@@ -31,6 +26,11 @@ class CoursesViewController: UIViewController {
             }
         }
 }
+    
+    func fetchDataWithAlamofire() {
+        
+        AlamofireNetworkRequest.sendRequest(url: url)
+    }
     
     
     private func configureCell(cell: TableViewCell, for indexPath: IndexPath) {

@@ -247,6 +247,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="showImage" id="tVc-fO-u4G"/>
                         <segue destination="mqn-Pv-JmZ" kind="show" identifier="ourCourses" id="L3J-AW-yWM"/>
+                        <segue destination="mqn-Pv-JmZ" kind="show" identifier="OurCoursesWithAlamofire" id="7ga-p7-2PB"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whg-RN-kG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,4 +273,7 @@
             <point key="canvasLocation" x="1394" y="114"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7ga-p7-2PB"/>
+    </inferredMetricsTieBreakers>
 </document>
