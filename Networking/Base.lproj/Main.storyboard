@@ -109,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="miQ-OX-hfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2915.9420289855075" y="478.79464285714283"/>
+            <point key="canvasLocation" x="3058" y="493"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="fUb-xE-tB1">
@@ -153,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ol-6S-PUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3628.985507246377" y="478.79464285714283"/>
+            <point key="canvasLocation" x="3955" y="493"/>
         </scene>
         <!--Image-->
         <scene sceneID="tne-QT-ifu">
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2915.9420289855075" y="-179.46428571428569"/>
+            <point key="canvasLocation" x="3058" y="-206"/>
         </scene>
         <!--Controls-->
         <scene sceneID="l9Q-h3-YXD">
@@ -268,6 +268,8 @@
                         <segue destination="mqn-Pv-JmZ" kind="show" identifier="OurCoursesWithAlamofire" id="7ga-p7-2PB"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="responseData" id="rWC-p9-SpU"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="LargeImage" id="dj4-wh-O8J"/>
+                        <segue destination="mqn-Pv-JmZ" kind="show" identifier="PostWithAlamofire" id="OOt-2B-8Eq"/>
+                        <segue destination="mqn-Pv-JmZ" kind="show" identifier="PutRequest" id="YRZ-5X-epw"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whg-RN-kG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -295,6 +297,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="dj4-wh-O8J"/>
-        <segue reference="7ga-p7-2PB"/>
+        <segue reference="YRZ-5X-epw"/>
     </inferredMetricsTieBreakers>
 </document>
