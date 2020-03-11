@@ -7,22 +7,46 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var bgSessionCompetionHandler: (() -> ())?
     
-    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+    func application(_ application: UIApplication,
+                     handleEventsForBackgroundURLSession identifier: String,
+                     completionHandler: @escaping () -> Void) {
         
         bgSessionCompetionHandler = completionHandler
     }
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+
         return true
     }
+
+   func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+       
+       let appId = Settings.appID
+       
+    if url.scheme != nil && url.scheme!.hasPrefix("fb: \(String(describing: appId))") && url.host ==  "authorize" {
+           return ApplicationDelegate.shared.application(app, open: url, options: options)
+       }
+       
+       return false
+   }
+   
+    func application(open url: URL, options:[UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+     
+        let handled: Bool = ApplicationDelegate.shared.application(UIApplication.init(), open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
+     
+        return handled
+   }
 
     // MARK: UISceneSession Lifecycle
 

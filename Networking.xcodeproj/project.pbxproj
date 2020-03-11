@@ -24,6 +24,8 @@
 		32B9CC402415145000F31F38 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC3F2415145000F31F38 /* NetworkManager.swift */; };
 		32B9CC4224152DE000F31F38 /* ImageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC4124152DDF00F31F38 /* ImageProperties.swift */; };
 		32B9CC442415733200F31F38 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC432415733200F31F38 /* DataProvider.swift */; };
+		32FB915424194EAD00FFD91E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB915324194EAD00FFD91E /* LoginViewController.swift */; };
+		32FB915624194F4500FFD91E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB915524194F4500FFD91E /* Extensions.swift */; };
 		FCCA53C1C7AA4EF350CFF73E /* Pods_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 480E99B39B029F32962A26DD /* Pods_Networking.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,9 @@
 		32B9CC3F2415145000F31F38 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		32B9CC4124152DDF00F31F38 /* ImageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProperties.swift; sourceTree = "<group>"; };
 		32B9CC432415733200F31F38 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		32FB915324194EAD00FFD91E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		32FB915524194F4500FFD91E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		32FB915724194FFF00FFD91E /* Networking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Networking.entitlements; sourceTree = "<group>"; };
 		480E99B39B029F32962A26DD /* Pods_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3C1C9E1BDE7F1DE61363DB /* Pods-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.release.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,10 +90,12 @@
 		3281514F24125E0E000F3D06 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				32FB915724194FFF00FFD91E /* Networking.entitlements */,
 				3281515024125E0E000F3D06 /* AppDelegate.swift */,
 				3281515224125E0E000F3D06 /* SceneDelegate.swift */,
 				32B9CC3F2415145000F31F38 /* NetworkManager.swift */,
 				32B9CC3B2415096700F31F38 /* MainCollectionVC.swift */,
+				32FB915324194EAD00FFD91E /* LoginViewController.swift */,
 				325AEF4424166009008F8C85 /* AlamofireNetworkRequest.swift */,
 				3281515424125E0E000F3D06 /* ViewController.swift */,
 				32B9CC312413A9B200F31F38 /* CoursesViewController.swift */,
@@ -99,6 +106,7 @@
 				32B9CC372413C6E400F31F38 /* Course.swift */,
 				32B9CC352413C2DD00F31F38 /* TableViewCell.swift */,
 				32B9CC332413BE6100F31F38 /* WebViewController.swift */,
+				32FB915524194F4500FFD91E /* Extensions.swift */,
 				3281515624125E0E000F3D06 /* Main.storyboard */,
 				3281515924125E0F000F3D06 /* Assets.xcassets */,
 				3281515B24125E0F000F3D06 /* LaunchScreen.storyboard */,
@@ -242,6 +250,7 @@
 				32B9CC402415145000F31F38 /* NetworkManager.swift in Sources */,
 				32B9CC382413C6E400F31F38 /* Course.swift in Sources */,
 				32B9CC3C2415096700F31F38 /* MainCollectionVC.swift in Sources */,
+				32FB915424194EAD00FFD91E /* LoginViewController.swift in Sources */,
 				3281515524125E0E000F3D06 /* ViewController.swift in Sources */,
 				32B9CC342413BE6100F31F38 /* WebViewController.swift in Sources */,
 				3281515124125E0E000F3D06 /* AppDelegate.swift in Sources */,
@@ -249,6 +258,7 @@
 				325AEF4524166009008F8C85 /* AlamofireNetworkRequest.swift in Sources */,
 				32B9CC3A24143B2300F31F38 /* WebsiteDescription.swift in Sources */,
 				32B9CC4224152DE000F31F38 /* ImageProperties.swift in Sources */,
+				32FB915624194F4500FFD91E /* Extensions.swift in Sources */,
 				32B9CC362413C2DD00F31F38 /* TableViewCell.swift in Sources */,
 				32B9CC322413A9B200F31F38 /* CoursesViewController.swift in Sources */,
 				32B9CC3E2415097C00F31F38 /* CollectionViewCell.swift in Sources */,
@@ -397,12 +407,46 @@
 			baseConfigurationReference = 1935DA30118C557F56BA4791 /* Pods-Networking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Networking/Networking.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2V83UZ9AV3;
 				INFOPLIST_FILE = Networking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-weak_framework",
+					"\"Accelerate\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.yatsyuk.dev-mail.Networking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -416,12 +460,46 @@
 			baseConfigurationReference = BC3C1C9E1BDE7F1DE61363DB /* Pods-Networking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Networking/Networking.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2V83UZ9AV3;
 				INFOPLIST_FILE = Networking/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"c++\"",
+					"-l\"stdc++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-weak_framework",
+					"\"Accelerate\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.yatsyuk.dev-mail.Networking";
 				PRODUCT_NAME = "$(TARGET_NAME)";

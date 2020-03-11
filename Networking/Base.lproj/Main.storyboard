@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4r2-7Y-7Rl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8yi-0Q-4HF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -276,11 +276,51 @@
             </objects>
             <point key="canvasLocation" x="2105.7971014492755" y="113.83928571428571"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="Fzm-B6-HFC">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="8yi-0Q-4HF" customClass="LoginViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xMI-Ve-jkG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firebaselogo" translatesAutoresizingMaskIntoConstraints="NO" id="khl-yN-w4D">
+                                <rect key="frame" x="132" y="139" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Aqh-nQ-a6K"/>
+                                    <constraint firstAttribute="height" constant="150" id="SiX-NH-d4C"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Networking Demo App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFp-CD-i3U">
+                                <rect key="frame" x="129" y="324" width="156" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156" id="f0x-rL-ogI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="khl-yN-w4D" firstAttribute="centerX" secondItem="c7B-de-I8a" secondAttribute="centerX" id="EgY-cV-oTG"/>
+                            <constraint firstItem="vFp-CD-i3U" firstAttribute="top" secondItem="khl-yN-w4D" secondAttribute="bottom" constant="35" id="Q8H-6U-NWj"/>
+                            <constraint firstItem="vFp-CD-i3U" firstAttribute="centerX" secondItem="c7B-de-I8a" secondAttribute="centerX" id="XvN-M7-fnW"/>
+                            <constraint firstItem="khl-yN-w4D" firstAttribute="top" secondItem="c7B-de-I8a" secondAttribute="top" constant="95" id="Yaa-Qo-0VO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c7B-de-I8a"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y7i-gt-GfB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="694" y="114"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="jGK-Sg-Jk2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4r2-7Y-7Rl" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="c5C-ec-Fwq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Ya-xC-Oe3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -295,6 +335,9 @@
             <point key="canvasLocation" x="1394" y="114"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="firebaselogo" width="180" height="180"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dj4-wh-O8J"/>
         <segue reference="YRZ-5X-epw"/>

@@ -24,6 +24,7 @@ enum Actions: String, CaseIterable {
     case downloadLargeImage = "Download Large Image"
     case postWithAlamofire = "Post With Alamofire"
     case putRequest = "Put Request with Alamofire"
+    case uploadImageWithAlamofire = "Upload Image (Alamofire)"
 
 }
 
@@ -157,6 +158,8 @@ class MainCollectionVC: UICollectionViewController {
             performSegue(withIdentifier: "PostWithAlamofire", sender: self)
         case .putRequest:
             performSegue(withIdentifier: "PutRequest", sender: self)
+        case .uploadImageWithAlamofire:
+            print(action.rawValue)
             
         }
     }

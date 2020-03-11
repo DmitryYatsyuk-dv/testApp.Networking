@@ -164,8 +164,8 @@ class AlamofireNetworkRequest {
             "name": "Network Requests with Alamofire",
             "link": "https://swiftbook.ru/contents/our-first-applications/",
             "imageUrl": "https://swiftbook.ru/wp-content/uploads/sites/2/2019/04/10-course-copy-8.png",
-            "numberOfLessons": 18,
-            "numberOfTests": 10]
+            "numberOfLessons": "18",
+            "numberOfTests": "10"]
         
         AF.request(url, method: .put, parameters: userData).responseJSON { responseJSON in
             
@@ -194,3 +194,21 @@ class AlamofireNetworkRequest {
     }
 }
 
+//static func uploadImage(url: String) { }
+//
+//        guard let url = URL(string: url) else { return }
+//
+//        let image = UIImage(named: "networking")!
+//        let data = image.pngData()!
+//
+//        // Dictionary for passing authorization parameters
+//        let httpHeaders = ["Authorization": "Client-ID 13ef50d5f8adbd8"]
+//
+//        AF.upload(multipartFormData: { multipartFormData in
+//        multipartFormData.append(image.jpegData(compressionQuality: 0.5)!, withName: "upload_data" , fileName: "file.jpeg", mimeType: "image/jpeg")
+//        },
+//                  to: url, method: .put , headers: httpHeaders, fileManager: .some(httpHeaders) , interceptor: .none)
+//        .response { resp in
+//        print(resp)
+//        }
+//

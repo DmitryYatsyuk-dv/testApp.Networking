@@ -6,6 +6,7 @@ target 'Networking' do
   use_frameworks!
 
   pod 'Alamofire', '~> 5.0'
-
+  pod 'FBSDKCoreKit'  
+  pod 'FBSDKLoginKit'
 
 end
