@@ -9,10 +9,15 @@
 import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
+import FirebaseDatabase
 
 
 class UserProfileVC: UIViewController {
 
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     lazy var fbLoginButton: UIButton = {
        
         let loginButton = FBLoginButton()
@@ -30,8 +35,15 @@ class UserProfileVC: UIViewController {
         super.viewDidLoad()
 
         view.addVerticalGradientLayer(topColor: .blue, bottomColor: .white)
+        userNameLabel.isHidden = true
         
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         
+        fetchingUserData()
     }
     
     private func setupViews() {
@@ -76,5 +88,31 @@ extension UserProfileVC: LoginButtonDelegate {
             print("Failed to sign out with error: ", error.localizedDescription)
             
         }
+    }
+    
+    //  Load data from Firebase
+    
+    private func fetchingUserData() {
+            
+        if Auth.auth().currentUser != nil {
+            
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            
+            Database.database().reference()
+                .child("Users")
+                .child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    guard let userData = snapshot.value as? [String: Any] else { return }
+                    
+                    let currentUser = CurrentUser(uid: uid, data: userData)
+                    
+                    self.activityIndicator.stopAnimating()
+                    self.userNameLabel.isHidden = false
+                    self.userNameLabel.text = "\(currentUser?.name ?? "Noname") Logged in with Facebook"
+                }) { (error) in
+                    print(error)
+            }
+        }
+        
     }
 }
