@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8yi-0Q-4HF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9MN-ER-JjG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -7,6 +7,56 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="irR-hj-V7W">
+            <objects>
+                <tabBarController id="9MN-ER-JjG" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="d57-GG-h9O">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ZYg-RM-hcK" kind="relationship" relationship="viewControllers" id="fW2-gZ-6Rn"/>
+                        <segue destination="4r2-7Y-7Rl" kind="relationship" relationship="viewControllers" id="JZq-PS-cg7"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dkc-7T-czW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="613" y="114"/>
+        </scene>
+        <!--User ProfileVC-->
+        <scene sceneID="ONp-Vg-a8P">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="ZYg-RM-hcK" customClass="UserProfileVC" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6QP-0Z-MK8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in With Facebook" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdl-0y-jwG">
+                                <rect key="frame" x="123" y="246" width="168" height="103"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="103" id="0WO-bn-xHB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gdl-0y-jwG" firstAttribute="centerX" secondItem="6sr-Xf-O8V" secondAttribute="centerX" id="JdH-QV-Jog"/>
+                            <constraint firstItem="Gdl-0y-jwG" firstAttribute="leading" secondItem="6sr-Xf-O8V" secondAttribute="leading" constant="123" id="LGS-F8-e8g"/>
+                            <constraint firstItem="Gdl-0y-jwG" firstAttribute="top" secondItem="6sr-Xf-O8V" secondAttribute="top" constant="202" id="Sxb-Id-DTZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6sr-Xf-O8V"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="WB3-i9-Rmf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mjV-Aa-83t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2106" y="836"/>
+        </scene>
         <!--Our Courses-->
         <scene sceneID="MiN-Uv-CEx">
             <objects>
@@ -158,7 +208,7 @@
         <!--Image-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ImageViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -313,12 +363,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y7i-gt-GfB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="114"/>
+            <point key="canvasLocation" x="-162" y="114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jGK-Sg-Jk2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4r2-7Y-7Rl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" image="list" id="bPW-25-CEr"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="c5C-ec-Fwq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Ya-xC-Oe3">
@@ -337,6 +388,8 @@
     </scenes>
     <resources>
         <image name="firebaselogo" width="180" height="180"/>
+        <image name="list" width="18" height="24"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dj4-wh-O8J"/>

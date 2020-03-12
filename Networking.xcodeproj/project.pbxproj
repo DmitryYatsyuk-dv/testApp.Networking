@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3206DD56241995A600173A39 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3206DD55241995A600173A39 /* UserProfileVC.swift */; };
 		325AEF4524166009008F8C85 /* AlamofireNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325AEF4424166009008F8C85 /* AlamofireNetworkRequest.swift */; };
 		3281515124125E0E000F3D06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281515024125E0E000F3D06 /* AppDelegate.swift */; };
 		3281515324125E0E000F3D06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3281515224125E0E000F3D06 /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		1935DA30118C557F56BA4791 /* Pods-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.debug.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.debug.xcconfig"; sourceTree = "<group>"; };
+		3206DD55241995A600173A39 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		325AEF4424166009008F8C85 /* AlamofireNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkRequest.swift; sourceTree = "<group>"; };
 		3281514D24125E0E000F3D06 /* Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3281515024125E0E000F3D06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,18 +95,19 @@
 				32FB915724194FFF00FFD91E /* Networking.entitlements */,
 				3281515024125E0E000F3D06 /* AppDelegate.swift */,
 				3281515224125E0E000F3D06 /* SceneDelegate.swift */,
+				32FB915324194EAD00FFD91E /* LoginViewController.swift */,
 				32B9CC3F2415145000F31F38 /* NetworkManager.swift */,
 				32B9CC3B2415096700F31F38 /* MainCollectionVC.swift */,
-				32FB915324194EAD00FFD91E /* LoginViewController.swift */,
+				3206DD55241995A600173A39 /* UserProfileVC.swift */,
 				325AEF4424166009008F8C85 /* AlamofireNetworkRequest.swift */,
-				3281515424125E0E000F3D06 /* ViewController.swift */,
-				32B9CC312413A9B200F31F38 /* CoursesViewController.swift */,
 				32B9CC432415733200F31F38 /* DataProvider.swift */,
 				32B9CC3D2415097C00F31F38 /* CollectionViewCell.swift */,
+				3281515424125E0E000F3D06 /* ViewController.swift */,
+				32B9CC312413A9B200F31F38 /* CoursesViewController.swift */,
 				32B9CC4124152DDF00F31F38 /* ImageProperties.swift */,
+				32B9CC352413C2DD00F31F38 /* TableViewCell.swift */,
 				32B9CC3924143B2300F31F38 /* WebsiteDescription.swift */,
 				32B9CC372413C6E400F31F38 /* Course.swift */,
-				32B9CC352413C2DD00F31F38 /* TableViewCell.swift */,
 				32B9CC332413BE6100F31F38 /* WebViewController.swift */,
 				32FB915524194F4500FFD91E /* Extensions.swift */,
 				3281515624125E0E000F3D06 /* Main.storyboard */,
@@ -262,6 +265,7 @@
 				32B9CC362413C2DD00F31F38 /* TableViewCell.swift in Sources */,
 				32B9CC322413A9B200F31F38 /* CoursesViewController.swift in Sources */,
 				32B9CC3E2415097C00F31F38 /* CollectionViewCell.swift in Sources */,
+				3206DD56241995A600173A39 /* UserProfileVC.swift in Sources */,
 				32B9CC442415733200F31F38 /* DataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

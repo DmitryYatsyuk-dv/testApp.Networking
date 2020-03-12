@@ -138,7 +138,5 @@ class NetworkManager {
                 }
             }
         }.resume()
-        
-        
     }
 }

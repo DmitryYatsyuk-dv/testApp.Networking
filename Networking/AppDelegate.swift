@@ -9,12 +9,14 @@
 import UIKit
 import FBSDKCoreKit
 
+let primaryColor = UIColor(red: 110/255, green: 200/255, blue: 200/255, alpha: 1)
+let secondaryColor = UIColor(red: 107/255, green: 148/255, blue: 230/255, alpha: 1)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var bgSessionCompetionHandler: (() -> ())?
-    
+
     func application(_ application: UIApplication,
                      handleEventsForBackgroundURLSession identifier: String,
                      completionHandler: @escaping () -> Void) {

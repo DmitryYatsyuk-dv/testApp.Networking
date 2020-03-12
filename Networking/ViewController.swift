@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 
-class ViewController: UIViewController {
+class ImageViewController: UIViewController {
     
     private let url = "https://images.pexels.com/photos/2103864/pexels-photo-2103864.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
     

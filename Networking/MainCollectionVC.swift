@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import FBSDKLoginKit
 
 enum Actions: String, CaseIterable {
     
@@ -25,7 +26,6 @@ enum Actions: String, CaseIterable {
     case postWithAlamofire = "Post With Alamofire"
     case putRequest = "Put Request with Alamofire"
     case uploadImageWithAlamofire = "Upload Image (Alamofire)"
-
 }
 
 private let reuseIdentifier = "Cell"
@@ -55,6 +55,7 @@ class MainCollectionVC: UICollectionViewController {
             self.alert.dismiss(animated: false)
             self.postNotification()
         }
+        checkLoggedIn()
     }
     
     
@@ -109,6 +110,7 @@ class MainCollectionVC: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return actions.count
     }
     
@@ -169,7 +171,7 @@ class MainCollectionVC: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let coursesVC = segue.destination as? CoursesViewController
-        let imageVC = segue.destination as? ViewController
+        let imageVC = segue.destination as? ImageViewController
         
         switch segue.identifier {
         case "ourCourses":
@@ -192,6 +194,8 @@ class MainCollectionVC: UICollectionViewController {
     }
 }
 
+// MARK: Notification
+
 extension MainCollectionVC {
     
     // Сreate a request for the user to send notifications
@@ -213,5 +217,26 @@ extension MainCollectionVC {
         let request = UNNotificationRequest(identifier: "TransferComplete", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+}
+
+// MARK: Facebook SDK
+
+extension MainCollectionVC {
+    
+    private func checkLoggedIn() {
+        
+        if !(AccessToken.isCurrentAccessTokenActive) {
+            
+            DispatchQueue.main.async {
+                
+                let storyboard = UIStoryboard(name: "Main",
+                                              bundle: nil)
+                
+                let loginViewController = storyboard.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+                self.present( loginViewController, animated: true)
+                return
+            }
+        }
     }
 }

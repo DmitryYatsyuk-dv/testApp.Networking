@@ -11,9 +11,6 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
-
-    let primaryColor = UIColor(red: 110/255, green: 200/255, blue: 200/255, alpha: 1)
-    let secondaryColor = UIColor(red: 107/255, green: 148/255, blue: 230/255, alpha: 1)
     
     lazy var fbLoginButton: UIButton = {
        
@@ -21,7 +18,21 @@ class LoginViewController: UIViewController {
         loginButton.frame = CGRect(x: 32, y: 450, width: view.frame.width - 64, height: 50)
         loginButton.delegate = self
         return loginButton
+    }()
+    
+    lazy var customFBLoginButton: UIButton = {
         
+        let loginButton = UIButton()
+        
+        loginButton.backgroundColor = .gray
+        
+        loginButton.setTitle("Login with Facebook", for: .normal)
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.frame = CGRect(x: 32, y: 450 + 80, width: view.frame.width - 64, height: 50)
+        loginButton.layer.cornerRadius = 5
+        loginButton.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
+        return loginButton
     }()
     
     override func viewDidLoad() {
@@ -31,25 +42,16 @@ class LoginViewController: UIViewController {
         
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
-        if (AccessToken.isCurrentAccessTokenActive) {
-          print("The user is logged in")
-        }
+    }
 
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        get {
-            return .lightContent
-        }
-    }
-    
-    
     private func setupViews() {
         
         view.addSubview(fbLoginButton)
+        view.addSubview(customFBLoginButton)
     }
 }
 
+// MARK: Facebook SDK
 extension LoginViewController: LoginButtonDelegate {
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
@@ -57,15 +59,39 @@ extension LoginViewController: LoginButtonDelegate {
         if error != nil {
             print(error!)
             return
-        } else {
+        }
+         
+        guard AccessToken.isCurrentAccessTokenActive else { return }
+        
+        openMainViewController()
             print("Successfully logged in the facebook...")
         }
-    }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         
         print("Did log out of facebook")
     }
     
+    private func openMainViewController() {
+        
+        dismiss(animated: true)
+    }
     
+    @objc private func handleCustomFBLogin() {
+        
+        LoginManager().logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let result = result else { return }
+            
+            if result.isCancelled { return }
+            else {
+                self.openMainViewController()
+            }
+        }
+    }
 }
