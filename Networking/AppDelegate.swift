@@ -8,13 +8,14 @@
 
 import UIKit
 import FBSDKCoreKit
+import Firebase
 
 let primaryColor = UIColor(red: 110/255, green: 200/255, blue: 200/255, alpha: 1)
 let secondaryColor = UIColor(red: 107/255, green: 148/255, blue: 230/255, alpha: 1)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var bgSessionCompetionHandler: (() -> ())?
 
     func application(_ application: UIApplication,
@@ -27,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
         return true

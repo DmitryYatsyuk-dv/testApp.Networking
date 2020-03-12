@@ -329,7 +329,7 @@
         <!--Login View Controller-->
         <scene sceneID="Fzm-B6-HFC">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="8yi-0Q-4HF" customClass="LoginViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" id="8yi-0Q-4HF" customClass="LoginViewController" customModule="Networking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xMI-Ve-jkG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -387,7 +387,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="firebaselogo" width="180" height="180"/>
+        <image name="firebaselogo" width="90" height="90"/>
         <image name="list" width="18" height="24"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
     </resources>
