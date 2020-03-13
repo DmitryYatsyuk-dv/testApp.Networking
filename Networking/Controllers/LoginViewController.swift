@@ -11,6 +11,8 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import FirebaseAuth
 import FirebaseDatabase
+import GoogleSignIn
+
 
 class LoginViewController: UIViewController {
     
@@ -40,8 +42,18 @@ class LoginViewController: UIViewController {
         return loginButton
     }()
     
+    lazy var googleLoginButton: GIDSignInButton = {
+       
+        let loginButton = GIDSignInButton()
+        loginButton.frame = CGRect(x: 32, y: 530 + 80, width: view.frame.width - 64, height: 50)
+        return loginButton
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
         
         setupViews()
         
@@ -53,6 +65,7 @@ class LoginViewController: UIViewController {
         
         view.addSubview(fbLoginButton)
         view.addSubview(customFBLoginButton)
+        view.addSubview(googleLoginButton)
     }
 }
 
@@ -163,5 +176,39 @@ extension LoginViewController: LoginButtonDelegate {
             print("Successfully saved user into firebase database")
             self.openMainViewController()
         }
+    }
+}
+
+// MARK: Google SDK
+
+extension LoginViewController: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if let error = error {
+            print("Failed to log into Google: ", error)
+            return
+        }
+        
+        print("Successfully logged in Google")
+        
+        guard let authentication = user.authentication else { return }
+        
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential) { (user, error) in
+            
+            if let error = error {
+                print("Something went wrong with our Google user: ", error)
+                return
+            }
+                
+            print("Successfully logged into Firebase with Google")
+            self.openMainViewController()
+        }
+            
+            
+            
     }
 }
