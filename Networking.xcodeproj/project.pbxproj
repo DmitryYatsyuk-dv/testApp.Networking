@@ -27,6 +27,8 @@
 		32B9CC402415145000F31F38 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC3F2415145000F31F38 /* NetworkManager.swift */; };
 		32B9CC4224152DE000F31F38 /* ImageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC4124152DDF00F31F38 /* ImageProperties.swift */; };
 		32B9CC442415733200F31F38 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B9CC432415733200F31F38 /* DataProvider.swift */; };
+		32D6B892241D26CE00F02895 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D6B891241D26CE00F02895 /* SignInViewController.swift */; };
+		32D6B894241D26D800F02895 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D6B893241D26D800F02895 /* SignUpViewController.swift */; };
 		32F2C53D241ADE2E008A4D3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32F2C53C241ADE2E008A4D3A /* GoogleService-Info.plist */; };
 		32FB915424194EAD00FFD91E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB915324194EAD00FFD91E /* LoginViewController.swift */; };
 		32FB915624194F4500FFD91E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FB915524194F4500FFD91E /* Extensions.swift */; };
@@ -57,6 +59,8 @@
 		32B9CC3F2415145000F31F38 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		32B9CC4124152DDF00F31F38 /* ImageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProperties.swift; sourceTree = "<group>"; };
 		32B9CC432415733200F31F38 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		32D6B891241D26CE00F02895 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		32D6B893241D26D800F02895 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		32F2C53C241ADE2E008A4D3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32FB915324194EAD00FFD91E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		32FB915524194F4500FFD91E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 		32F429A6241BBC21004DDD0F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				32D6B891241D26CE00F02895 /* SignInViewController.swift */,
+				32D6B893241D26D800F02895 /* SignUpViewController.swift */,
 				32B9CC332413BE6100F31F38 /* WebViewController.swift */,
 				3206DD55241995A600173A39 /* UserProfileVC.swift */,
 				32FB915324194EAD00FFD91E /* LoginViewController.swift */,
@@ -318,12 +324,14 @@
 				3281515524125E0E000F3D06 /* ViewController.swift in Sources */,
 				32B9CC342413BE6100F31F38 /* WebViewController.swift in Sources */,
 				3281515124125E0E000F3D06 /* AppDelegate.swift in Sources */,
+				32D6B892241D26CE00F02895 /* SignInViewController.swift in Sources */,
 				3281515324125E0E000F3D06 /* SceneDelegate.swift in Sources */,
 				3272ED72241AEC6D0087221D /* UserProfile.swift in Sources */,
 				325AEF4524166009008F8C85 /* AlamofireNetworkRequest.swift in Sources */,
 				32B9CC3A24143B2300F31F38 /* WebsiteDescription.swift in Sources */,
 				32B9CC4224152DE000F31F38 /* ImageProperties.swift in Sources */,
 				32FB915624194F4500FFD91E /* Extensions.swift in Sources */,
+				32D6B894241D26D800F02895 /* SignUpViewController.swift in Sources */,
 				32B9CC362413C2DD00F31F38 /* TableViewCell.swift in Sources */,
 				32B9CC322413A9B200F31F38 /* CoursesViewController.swift in Sources */,
 				32B9CC3E2415097C00F31F38 /* CollectionViewCell.swift in Sources */,

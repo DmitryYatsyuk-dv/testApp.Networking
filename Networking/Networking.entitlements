@@ -4,6 +4,7 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
+		<string>$(AppIdentifierPrefix)mck-family_di@rambler.ru</string>
 		<string>$(AppIdentifierPrefix)ru.yatsyuk.dev-mail.Networking</string>
 	</array>
 </dict>

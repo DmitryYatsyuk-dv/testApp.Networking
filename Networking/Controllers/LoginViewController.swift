@@ -18,7 +18,6 @@ class LoginViewController: UIViewController {
     
     var userProfile: UserProfile?
     
-    
     lazy var fbLoginButton: UIButton = {
         
         let loginButton = FBLoginButton()
@@ -49,15 +48,40 @@ class LoginViewController: UIViewController {
         return loginButton
     }()
     
+    lazy var customGoogleLoginButton: UIButton = {
+        
+        let loginButton = UIButton()
+        
+        loginButton.frame = CGRect(x: 32, y: 610 + 80, width: view.frame.width - 64, height: 50)
+        loginButton.backgroundColor = .white
+        loginButton.setTitle("Login with Google", for: .normal)
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        loginButton.setTitleColor(.gray, for: .normal)
+        loginButton.layer.cornerRadius = 5
+        loginButton.addTarget(self, action: #selector(handleCustomGoogleLogin), for: .touchUpInside)
+        
+        return loginButton
+    }()
+    
+    lazy var signInWithEmail: UIButton = {
+        
+        let loginButton = UIButton(
+        )
+        loginButton.frame = CGRect(x: 32, y: 690 + 80, width: view.frame.width - 64, height: 50)
+        loginButton.setTitle("Sign In with Email", for: .normal)
+        loginButton.addTarget(self, action: #selector(openSignInVC), for: .touchUpInside)
+        return loginButton
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance()?.presentingViewController = self
+        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
         setupViews()
         
-        view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
         
     }
     
@@ -66,6 +90,17 @@ class LoginViewController: UIViewController {
         view.addSubview(fbLoginButton)
         view.addSubview(customFBLoginButton)
         view.addSubview(googleLoginButton)
+        view.addSubview(customGoogleLoginButton)
+        view.addSubview(signInWithEmail)
+        
+    }
+    
+    private func openMainViewController() {
+           dismiss(animated: true)
+       }
+    
+    @objc private func openSignInVC() {
+        performSegue(withIdentifier: "SignIn", sender: self)
     }
 }
 
@@ -87,11 +122,6 @@ extension LoginViewController: LoginButtonDelegate {
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         
         print("Did log out of facebook")
-    }
-    
-    private func openMainViewController() {
-        
-        dismiss(animated: true)
     }
     
     @objc private func handleCustomFBLogin() {
@@ -214,5 +244,10 @@ extension LoginViewController: GIDSignInDelegate {
             print("Successfully logged into Firebase with Google")
             self.saveIntoFirebase()
         }
+    }
+    
+    @objc private func handleCustomGoogleLogin() {
+        
+        GIDSignIn.sharedInstance()?.signIn()
     }
 }
