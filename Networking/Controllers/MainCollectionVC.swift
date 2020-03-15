@@ -11,7 +11,6 @@ import UserNotifications
 import FBSDKLoginKit
 import FirebaseAuth
 
-
 enum Actions: String, CaseIterable {
     
     case downloadImage = "Download Image"
@@ -36,7 +35,6 @@ private let uploadImage = "https://api.imgur.com/3/image"
 private let swiftbookApi = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
 
 
-
 class MainCollectionVC: UICollectionViewController {
     
     let actions = Actions.allCases
@@ -54,12 +52,12 @@ class MainCollectionVC: UICollectionViewController {
             // Save the file for future use
             print("Download finished: \(location.absoluteString)")
             self.filePath = location.absoluteString
-            self.alert.dismiss(animated: false)
+            self.alert.dismiss(animated: false, completion: nil)
             self.postNotification()
         }
+        
         checkLoggedIn()
     }
-    
     
     private func showAlert() {
         
@@ -120,9 +118,6 @@ class MainCollectionVC: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
         
         cell.label.text = actions[indexPath.row].rawValue
-        
-        
-        // Configure the cell
         
         return cell
     }

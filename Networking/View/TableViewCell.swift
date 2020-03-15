@@ -14,7 +14,6 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var courseOfName: UILabel!
     @IBOutlet weak var numberOfLessons: UILabel!
     @IBOutlet weak var numberOfTests: UILabel!
-    
 }
 
 

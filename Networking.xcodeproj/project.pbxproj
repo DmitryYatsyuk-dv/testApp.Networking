@@ -129,12 +129,12 @@
 		32F429A6241BBC21004DDD0F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				32B9CC3B2415096700F31F38 /* MainCollectionVC.swift */,
+				32FB915324194EAD00FFD91E /* LoginViewController.swift */,
 				32D6B891241D26CE00F02895 /* SignInViewController.swift */,
 				32D6B893241D26D800F02895 /* SignUpViewController.swift */,
 				32B9CC332413BE6100F31F38 /* WebViewController.swift */,
 				3206DD55241995A600173A39 /* UserProfileVC.swift */,
-				32FB915324194EAD00FFD91E /* LoginViewController.swift */,
-				32B9CC3B2415096700F31F38 /* MainCollectionVC.swift */,
 				3281515424125E0E000F3D06 /* ViewController.swift */,
 				32B9CC312413A9B200F31F38 /* CoursesViewController.swift */,
 			);

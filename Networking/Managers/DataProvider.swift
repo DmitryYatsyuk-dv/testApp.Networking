@@ -93,8 +93,6 @@ extension DataProvider: URLSessionDownloadDelegate {
 extension DataProvider: URLSessionTaskDelegate {
     
     // Waiting for a connection, updating the interface and more
-    
-    
 }
 
 

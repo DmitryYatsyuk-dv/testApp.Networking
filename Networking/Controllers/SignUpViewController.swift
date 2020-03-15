@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController: UIViewController {
+    
+    var activityIndicator: UIActivityIndicatorView!
     
     lazy var continueButton: UIButton = {
         let button = UIButton()
@@ -37,11 +40,23 @@ class SignUpViewController: UIViewController {
         view.addSubview(continueButton)
         setContinueButton(enabled: false)
         
+        switchActivityIndicator()
+        
+        
         userNameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         confirmPasswordTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
+    }
+    
+    func switchActivityIndicator() {
+        
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.color = secondaryColor
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityIndicator.center = continueButton.center
+        view.addSubview(activityIndicator)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +84,8 @@ class SignUpViewController: UIViewController {
         
         continueButton.center = CGPoint(x: view.center.x,
                                         y: view.frame.height - keyboardFrame.height - 16.0 - continueButton.frame.height / 2)
+        
+        activityIndicator.center = continueButton.center
     }
     
     private func setContinueButton(enabled:Bool) {
@@ -98,5 +115,47 @@ class SignUpViewController: UIViewController {
     
     @objc private func handleSignUp() {
         
+        setContinueButton(enabled: false)
+        
+        continueButton.setTitle("", for: .normal)
+        activityIndicator.startAnimating()
+        
+        
+        guard
+            let email = emailTextField.text,
+            let password = passwordTextField.text,
+            let userName = userNameTextField.text
+            else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                
+                self.setContinueButton(enabled: true)
+                self.continueButton.setTitle("Continue", for: .normal)
+                self.activityIndicator.stopAnimating()
+                
+                return
+            }
+            print("Successfully logget into Firebase with User Email")
+            
+            if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
+                
+                changeRequest.displayName = userName
+                changeRequest.commitChanges { (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        
+                        self.setContinueButton(enabled: true)
+                        self.continueButton.setTitle("Continue", for: .normal)
+                        self.activityIndicator.stopAnimating()
+                    }
+                    print("User display name changed!")
+                    
+                    self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
 }

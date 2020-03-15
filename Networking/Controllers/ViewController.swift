@@ -23,7 +23,7 @@ class ImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
         completedLabel.isHidden = true
@@ -42,11 +42,11 @@ class ImageViewController: UIViewController {
     func fetchDataWithAlamofire() {
         
         AlamofireNetworkRequest.downloadImage(url: url) { (image) in
-                
-                self.activityIndicator.stopAnimating()
-                self.imageView.image = image
-            }
+            
+            self.activityIndicator.stopAnimating()
+            self.imageView.image = image
         }
+    }
     
     func downloadImageWithProgress() {
         
@@ -65,7 +65,6 @@ class ImageViewController: UIViewController {
             self.completedLabel.isHidden = true
             self.progressView.isHidden = true
             self.imageView.image = image
-            
         }
     }
 }

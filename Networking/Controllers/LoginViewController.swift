@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
     }()
     
     lazy var googleLoginButton: GIDSignInButton = {
-       
+        
         let loginButton = GIDSignInButton()
         loginButton.frame = CGRect(x: 32, y: 530 + 80, width: view.frame.width - 64, height: 50)
         return loginButton
@@ -96,8 +96,8 @@ class LoginViewController: UIViewController {
     }
     
     private func openMainViewController() {
-           dismiss(animated: true)
-       }
+        dismiss(animated: true)
+    }
     
     @objc private func openSignInVC() {
         performSegue(withIdentifier: "SignIn", sender: self)
@@ -105,6 +105,7 @@ class LoginViewController: UIViewController {
 }
 
 // MARK: Facebook SDK
+
 extension LoginViewController: LoginButtonDelegate {
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
@@ -114,7 +115,7 @@ extension LoginViewController: LoginButtonDelegate {
             return
         }
         guard AccessToken.isCurrentAccessTokenActive else { return }
-
+        
         print("Successfully logged in the facebook...")
         self.signIntoFirebase()
     }
@@ -240,7 +241,7 @@ extension LoginViewController: GIDSignInDelegate {
                 print("Something went wrong with our Google user: ", error)
                 return
             }
-                
+            
             print("Successfully logged into Firebase with Google")
             self.saveIntoFirebase()
         }

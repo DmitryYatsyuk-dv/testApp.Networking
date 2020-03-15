@@ -14,7 +14,7 @@ import GoogleSignIn
 
 
 class UserProfileVC: UIViewController {
-
+    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -36,7 +36,7 @@ class UserProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addVerticalGradientLayer(topColor: .blue, bottomColor: .white)
         userNameLabel.isHidden = true
         
@@ -45,7 +45,7 @@ class UserProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         
+        
         fetchingUserData()
     }
     
@@ -55,7 +55,7 @@ class UserProfileVC: UIViewController {
     }
 }
 
- 
+
 extension UserProfileVC {
     
     private func openLoginViewController() {
@@ -79,25 +79,34 @@ extension UserProfileVC {
     //  Load data from Firebase
     
     private func fetchingUserData() {
-            
+        
         if Auth.auth().currentUser != nil {
             
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            
-            Database.database().reference()
-                .child("Users")
-                .child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                    
-                    guard let userData = snapshot.value as? [String: Any] else { return }
-                    
-                    self.currentUser = CurrentUser(uid: uid, data: userData)
-                    
-                    self.activityIndicator.stopAnimating()
-                    self.userNameLabel.isHidden = false
-                    self.userNameLabel.text = self.getProviderData()
-                }) { (error) in
-                    print(error)
+            if let userName = Auth.auth().currentUser?.displayName {
+                activityIndicator.stopAnimating()
+                userNameLabel.isHidden = false
+                userNameLabel.text = getProviderData(with: userName)
+                
+            } else {
+                
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                
+                Database.database().reference()
+                    .child("Users")
+                    .child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                        
+                        guard let userData = snapshot.value as? [String: Any] else { return }
+                        
+                        self.currentUser = CurrentUser(uid: uid, data: userData)
+                        
+                        self.activityIndicator.stopAnimating()
+                        self.userNameLabel.isHidden = false
+                        self.userNameLabel.text = self.getProviderData(with: self.currentUser?.name ?? "Noname")
+                    }) { (error) in
+                        print(error)
+                }
             }
+            
         }
     }
     
@@ -114,7 +123,11 @@ extension UserProfileVC {
                     openLoginViewController()
                 case "google.com" :
                     GIDSignIn.sharedInstance()?.signOut()
-                     print("User did log out of google")
+                    print("User did log out of google")
+                    openLoginViewController()
+                case "password" :
+                    try! Auth.auth().signOut()
+                    print("User did sign out")
                     openLoginViewController()
                 default:
                     print("User is signed in with \(userInfo.providerID)")
@@ -125,12 +138,12 @@ extension UserProfileVC {
     
     // We determine the provider and return the finished text for label
     
-    private func getProviderData() -> String{
+    private func getProviderData(with user: String) -> String{
         
         var greetings = ""
         
         if let providerData = Auth.auth().currentUser?.providerData {
-        
+            
             for userInfo in providerData {
                 
                 switch userInfo.providerID {
@@ -138,12 +151,14 @@ extension UserProfileVC {
                     provider = "Facebook"
                 case "google.com" :
                     provider = "Google"
+                case "password" :
+                    provider = "Email"
                 default:
                     break
                 }
             }
             
-            greetings = "\(currentUser?.name ?? "Noname") Logged in with \(provider!)"
+            greetings = "\(user) Logged in with \(provider!)"
         }
         return greetings
     }
@@ -151,40 +166,40 @@ extension UserProfileVC {
 
 /*
  // MARK: Facebook SDK
-
+ 
  extension UserProfileVC: LoginButtonDelegate {
-     
-     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-         
-         if error != nil {
-             print(error!)
-             return
-         }
-             print("Successfully logged in the facebook...")
-         }
-     
-     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-         
-         print("Did log out of facebook")
-         openLoginViewController()
-     }
-     
-     private func openLoginViewController() {
-         
-         do {
-             try Auth.auth().signOut()
-             
-             DispatchQueue.main.async {
-                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                 let loginViewController = storyboard.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
-                 self.present( loginViewController, animated: true)
-                 return
-             }
-         } catch let error {
-             
-             print("Failed to sign out with error: ", error.localizedDescription)
-             
-         }
-     }
-     
+ 
+ func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+ 
+ if error != nil {
+ print(error!)
+ return
+ }
+ print("Successfully logged in the facebook...")
+ }
+ 
+ func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+ 
+ print("Did log out of facebook")
+ openLoginViewController()
+ }
+ 
+ private func openLoginViewController() {
+ 
+ do {
+ try Auth.auth().signOut()
+ 
+ DispatchQueue.main.async {
+ let storyboard = UIStoryboard(name: "Main", bundle: nil)
+ let loginViewController = storyboard.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+ self.present( loginViewController, animated: true)
+ return
+ }
+ } catch let error {
+ 
+ print("Failed to sign out with error: ", error.localizedDescription)
+ 
+ }
+ }
+ 
  */

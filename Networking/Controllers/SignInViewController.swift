@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController {
+    
+    var activityIndicator: UIActivityIndicatorView!
     
     lazy var continueButton: UIButton = {
         let button = UIButton()
@@ -36,18 +39,30 @@ class SignInViewController: UIViewController {
         view.addSubview(continueButton)
         setContinueButton(enabled: false)
         
+        switchActivityIndicator()
+        
         emailTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
     }
     
-    private func pwSetting() {
+    func switchActivityIndicator() {
         
-    passwordTextField.passwordRules = UITextInputPasswordRules(descriptor: "required: upper; required: digit; max-consecutive: 2; minlength: 8;")
-
+        // Initial activityIndicator
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.color = secondaryColor
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        activityIndicator.center = continueButton.center
+        view.addSubview(activityIndicator)
     }
     
-   override func viewWillAppear(_ animated: Bool) {
+    private func pwSetting() {
+        
+        passwordTextField.passwordRules = UITextInputPasswordRules(descriptor: "required: upper; required: digit; max-consecutive: 2; minlength: 8;")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         NotificationCenter.default.addObserver(self,
@@ -69,6 +84,8 @@ class SignInViewController: UIViewController {
         
         continueButton.center = CGPoint(x: view.center.x,
                                         y: view.frame.height - keyboardFrame.height - 16.0 - continueButton.frame.height / 2)
+        
+        activityIndicator.center = continueButton.center
     }
     
     
@@ -97,5 +114,29 @@ class SignInViewController: UIViewController {
     
     @objc private func handleSignIn() {
         
+        setContinueButton(enabled: false)
+        continueButton.setTitle("", for: .normal)
+        activityIndicator.startAnimating()
+        
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text
+            else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                
+                self.setContinueButton(enabled: true)
+                self.continueButton.setTitle("Continue", for: .normal)
+                self.activityIndicator.stopAnimating()
+                
+                return
+            }
+            
+            print("Successfully logged in with Email")
+            
+            self.presentingViewController?.presentingViewController?.dismiss(animated: true)
+        }
     }
 }

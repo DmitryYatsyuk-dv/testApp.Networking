@@ -64,8 +64,7 @@ class CoursesViewController: UIViewController {
             }
         }
     }
-    
-    
+
     private func configureCell(cell: TableViewCell, for indexPath: IndexPath) {
         
         let course = courses[indexPath.row]
